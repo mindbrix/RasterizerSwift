@@ -17,13 +17,13 @@ class View: NSView, CALayerDelegate {
     static let DrawEllipse: Rasterizer.DrawClosure = { ctx in
         ctx.fillEllipse(in: CGRect(x: 0, y: 0, width: 100, height: 100))
     }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         wantsLayer = true
         layer?.delegate = self
-        
-        if let scene = Rasterizer.Scene(drawClosure: Self.DrawEllipse) {
-            sceneList = [.init(scene: scene, ctm: .identity)]
+        if let layer = Rasterizer.createLayer(drawClosure: Self.DrawEllipse) {
+            sceneList = [.init(layer: layer, ctm: .identity)]
         }
     }
     
