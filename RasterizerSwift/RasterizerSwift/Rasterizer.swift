@@ -24,12 +24,6 @@ class Rasterizer {
             self.layer = layer
             drawClosure(context)
         }
-        func draw(ctx: CGContext) {
-            guard let layer = layer else {
-                return
-            }
-            ctx.draw(layer, at: .zero)
-        }
         let layer: CGLayer?
     }
     
@@ -43,7 +37,9 @@ class Rasterizer {
             for element in elements {
                 ctx.saveGState()
                 ctx.concatenate(element.ctm)
-                element.scene.draw(ctx: ctx)
+                if let layer = element.scene.layer {
+                    ctx.draw(layer, at: .zero)
+                }
                 ctx.restoreGState()
             }
         }
