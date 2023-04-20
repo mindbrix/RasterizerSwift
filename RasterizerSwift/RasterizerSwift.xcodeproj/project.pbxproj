@@ -15,6 +15,7 @@
 		E9A5393829F16C52001E3E39 /* RasterizerSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A5393729F16C52001E3E39 /* RasterizerSwiftTests.swift */; };
 		E9A5394229F16C52001E3E39 /* RasterizerSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A5394129F16C52001E3E39 /* RasterizerSwiftUITests.swift */; };
 		E9A5394429F16C52001E3E39 /* RasterizerSwiftUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A5394329F16C52001E3E39 /* RasterizerSwiftUITestsLaunchTests.swift */; };
+		E9A5395329F16D8C001E3E39 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A5395229F16D8C001E3E39 /* View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		E9A5393D29F16C52001E3E39 /* RasterizerSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RasterizerSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A5394129F16C52001E3E39 /* RasterizerSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterizerSwiftUITests.swift; sourceTree = "<group>"; };
 		E9A5394329F16C52001E3E39 /* RasterizerSwiftUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterizerSwiftUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E9A5395229F16D8C001E3E39 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				E9A5392A29F16C52001E3E39 /* Main.storyboard */,
 				E9A5392D29F16C52001E3E39 /* Info.plist */,
 				E9A5392E29F16C52001E3E39 /* RasterizerSwift.entitlements */,
+				E9A5395229F16D8C001E3E39 /* View.swift */,
 			);
 			path = RasterizerSwift;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9A5395329F16D8C001E3E39 /* View.swift in Sources */,
 				E9A5392529F16C51001E3E39 /* ViewController.swift in Sources */,
 				E9A5392329F16C51001E3E39 /* AppDelegate.swift in Sources */,
 				E9A5392729F16C51001E3E39 /* Document.swift in Sources */,
