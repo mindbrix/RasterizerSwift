@@ -22,7 +22,7 @@ class View: NSView, CALayerDelegate {
         super.init(coder: coder)
         wantsLayer = true
         layer?.delegate = self
-        if let layer = Rasterizer.createLayer(drawClosure: Self.DrawEllipse) {
+        if let layer = Rasterizer.createCGLayer(drawClosure: Self.DrawEllipse) {
             sceneList = [.init(layer: layer, ctm: .identity)]
         }
     }

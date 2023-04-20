@@ -18,11 +18,11 @@ class Rasterizer {
     
     typealias SceneList = [Element]
     
-    static func createLayer(drawClosure: DrawClosure) -> CGLayer? {
+    static func createCGLayer(size: CGSize? = nil, drawClosure: DrawClosure) -> CGLayer? {
         guard let data = CFDataCreateMutable(nil, 0),
               let consumer = CGDataConsumer(data: data),
               let pdf = CGContext(consumer: consumer, mediaBox: nil, nil),
-              let layer = CGLayer(pdf, size: CGSize(width: 100, height: 100), auxiliaryInfo: nil),
+              let layer = CGLayer(pdf, size: size ?? CGSize(width: 100, height: 100), auxiliaryInfo: nil),
               let context = layer.context
         else {
             return nil
