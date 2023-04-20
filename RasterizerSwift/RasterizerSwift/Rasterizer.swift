@@ -27,22 +27,22 @@ class Rasterizer {
         let layer: CGLayer?
     }
     
-    class SceneList {
-        struct Element {
-            let scene: Scene
-            let ctm: CGAffineTransform
-        }
-        
-        func draw(ctx: CGContext) {
-            for element in elements {
-                ctx.saveGState()
-                ctx.concatenate(element.ctm)
-                if let layer = element.scene.layer {
-                    ctx.draw(layer, at: .zero)
-                }
-                ctx.restoreGState()
+    struct Element {
+        let scene: Scene
+        let ctm: CGAffineTransform
+    }
+    
+    typealias SceneList = [Element]
+    
+    
+    static func drawList(list: SceneList, in ctx: CGContext) {
+        for element in list {
+            ctx.saveGState()
+            ctx.concatenate(element.ctm)
+            if let layer = element.scene.layer {
+                ctx.draw(layer, at: .zero)
             }
+            ctx.restoreGState()
         }
-        var elements = [Element]()
     }
 }

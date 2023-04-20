@@ -8,7 +8,7 @@
 import Cocoa
 
 class View: NSView, CALayerDelegate {
-    var sceneList: Rasterizer.SceneList {
+    var sceneList: Rasterizer.SceneList = [] {
         didSet {
             self.layer?.setNeedsDisplay()
         }
@@ -18,26 +18,21 @@ class View: NSView, CALayerDelegate {
         ctx.fillEllipse(in: CGRect(x: 0, y: 0, width: 100, height: 100))
     }
     required init?(coder: NSCoder) {
-        sceneList = Rasterizer.SceneList()
         super.init(coder: coder)
         wantsLayer = true
         layer?.delegate = self
         
         if let scene = Rasterizer.Scene(drawClosure: Self.DrawEllipse) {
-            let list = Rasterizer.SceneList()
-            list.elements = [.init(scene: scene, ctm: .identity)]
-            sceneList = list
+            sceneList = [.init(scene: scene, ctm: .identity)]
         }
     }
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-
-        // Drawing code here.
     }
     
     func draw(_ layer: CALayer, in ctx: CGContext) {
-        sceneList.draw(ctx: ctx)
+        Rasterizer.drawList(list: sceneList, in: ctx)
     }
 
 }
