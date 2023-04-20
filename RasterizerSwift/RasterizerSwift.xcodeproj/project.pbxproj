@@ -16,6 +16,7 @@
 		E9A5394229F16C52001E3E39 /* RasterizerSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A5394129F16C52001E3E39 /* RasterizerSwiftUITests.swift */; };
 		E9A5394429F16C52001E3E39 /* RasterizerSwiftUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A5394329F16C52001E3E39 /* RasterizerSwiftUITestsLaunchTests.swift */; };
 		E9A5395329F16D8C001E3E39 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A5395229F16D8C001E3E39 /* View.swift */; };
+		E9A5395529F1720B001E3E39 /* Rasterizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A5395429F1720B001E3E39 /* Rasterizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		E9A5394129F16C52001E3E39 /* RasterizerSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterizerSwiftUITests.swift; sourceTree = "<group>"; };
 		E9A5394329F16C52001E3E39 /* RasterizerSwiftUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterizerSwiftUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E9A5395229F16D8C001E3E39 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		E9A5395429F1720B001E3E39 /* Rasterizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rasterizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				E9A5392D29F16C52001E3E39 /* Info.plist */,
 				E9A5392E29F16C52001E3E39 /* RasterizerSwift.entitlements */,
 				E9A5395229F16D8C001E3E39 /* View.swift */,
+				E9A5395429F1720B001E3E39 /* Rasterizer.swift */,
 			);
 			path = RasterizerSwift;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				E9A5395329F16D8C001E3E39 /* View.swift in Sources */,
 				E9A5392529F16C51001E3E39 /* ViewController.swift in Sources */,
 				E9A5392329F16C51001E3E39 /* AppDelegate.swift in Sources */,
+				E9A5395529F1720B001E3E39 /* Rasterizer.swift in Sources */,
 				E9A5392729F16C51001E3E39 /* Document.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

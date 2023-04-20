@@ -8,8 +8,12 @@
 import Cocoa
 
 class View: NSView, CALayerDelegate {
-
+    static let DrawEllipse: Rasterizer.drawClosure = { ctx in
+        ctx.fillEllipse(in: CGRect(x: 0, y: 0, width: 100, height: 100))
+    }
     required init?(coder: NSCoder) {
+        scene = Rasterizer.Scene(draw: Self.DrawEllipse)
+        
         super.init(coder: coder)
         wantsLayer = true
         layer?.delegate = self
@@ -22,7 +26,12 @@ class View: NSView, CALayerDelegate {
     }
     
     func draw(_ layer: CALayer, in ctx: CGContext) {
-        ctx.fillEllipse(in: CGRect(x: 0, y: 0, width: 100, height: 100))
+        guard let scene = scene else {
+            return
+        }
+        scene.draw(ctx: ctx)
     }
+    
+    var scene: Rasterizer.Scene?
     
 }
