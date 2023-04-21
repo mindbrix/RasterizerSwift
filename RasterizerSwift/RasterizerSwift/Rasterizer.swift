@@ -32,7 +32,11 @@ class Rasterizer {
     }
     
     
+    static let IterationCount = 0
     static func drawList(list: SceneList, in ctx: CGContext) {
+        DispatchQueue.concurrentPerform(iterations: Self.IterationCount, execute: { i in
+            print(i)
+        })
         for element in list {
             ctx.saveGState()
             ctx.concatenate(element.ctm)
