@@ -35,15 +35,17 @@ class Rasterizer {
     static let IterationCount = 0
     static func drawList(list: SceneList, in ctx: CGContext) {
         let slices = Slicer.sliceCGContext(ctx, into: IterationCount)
-        let w = slices?[0].ctx
+        guard let newCtx = slices?[0].ctx else {
+            return
+        }
         DispatchQueue.concurrentPerform(iterations: IterationCount, execute: { i in
             print(i)
         })
         for element in list {
-            ctx.saveGState()
-            ctx.concatenate(element.ctm)
-            ctx.draw(element.layer, at: .zero)
-            ctx.restoreGState()
+            newCtx.saveGState()
+            newCtx.concatenate(element.ctm)
+            newCtx.draw(element.layer, at: .zero)
+            newCtx.restoreGState()
         }
     }
 }

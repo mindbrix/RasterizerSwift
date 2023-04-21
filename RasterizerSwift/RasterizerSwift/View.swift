@@ -23,6 +23,7 @@ class View: NSView, CALayerDelegate {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         wantsLayer = true
+        layer?.contentsFormat = .RGBA8Uint
         layer?.delegate = self
         Timer.scheduledTimer(withTimeInterval: 1 / 60, repeats: true, block: { [weak self] _ in
             self?.update()

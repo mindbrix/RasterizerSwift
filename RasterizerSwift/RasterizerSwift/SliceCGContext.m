@@ -27,7 +27,9 @@
 @implementation Slicer
 
 + (NSArray<ContextWrapper *> *)sliceCGContext:(CGContextRef)ctx into:(NSInteger)sliceCount {
-    return @[[[ContextWrapper alloc] init:ctx]];
+    CGContextRef newCtx = CGBitmapContextCreate(CGBitmapContextGetData(ctx), CGBitmapContextGetWidth(ctx), CGBitmapContextGetHeight(ctx), CGBitmapContextGetBitsPerComponent(ctx), CGBitmapContextGetBytesPerRow(ctx), CGBitmapContextGetColorSpace(ctx), CGBitmapContextGetBitmapInfo(ctx));
+    CGContextConcatCTM(newCtx, CGContextGetCTM(ctx));
+    return @[[[ContextWrapper alloc] init:newCtx]];
 }
 
 @end
