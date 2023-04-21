@@ -18,21 +18,36 @@ class View: NSView, CALayerDelegate {
         ctx.fillEllipse(in: CGRect(x: 0, y: 0, width: 100, height: 100))
     }
     
+    // MARK: - NSView
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         wantsLayer = true
         layer?.delegate = self
-        if let layer = Rasterizer.createCGLayer(drawClosure: Self.DrawEllipse) {
-            sceneList = [.init(layer: layer, ctm: .identity)]
-        }
+        Timer.scheduledTimer(withTimeInterval: 1 / 60, repeats: true, block: { [weak self] _ in
+            self?.update()
+        })
     }
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
     }
     
+    // MARK: - CALayerDelegate
+    
     func draw(_ layer: CALayer, in ctx: CGContext) {
         Rasterizer.drawList(list: sceneList, in: ctx)
     }
 
+    func update() {
+        if let layer = ellipse {
+            let interval: CFTimeInterval = 3
+            let time = CACurrentMediaTime() / interval
+            let t = time - floor(time)
+            let size = self.bounds.size
+            sceneList = [.init(layer: layer, ctm: CGAffineTransformMakeTranslation(t * size.width, t * size.height))]
+        }
+    }
+    
+    let ellipse: CGLayer? = Rasterizer.createCGLayer(drawClosure: View.DrawEllipse)
 }
