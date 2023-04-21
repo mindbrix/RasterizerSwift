@@ -34,8 +34,12 @@ class Rasterizer {
     
     static let IterationCount = 0
     static func drawList(list: SceneList, in ctx: CGContext) {
-        let slices = Slicer.sliceCGContext(ctx, into: IterationCount)
-        guard let newCtx = slices?[0].ctx else {
+        let slcs:[CGContext] = (0...IterationCount).compactMap({ i in
+            let newCtx = CGContext(data: ctx.data, width: ctx.width, height: ctx.height, bitsPerComponent: ctx.bitsPerComponent, bytesPerRow: ctx.bytesPerRow, space: ctx.colorSpace ?? CGColorSpaceCreateDeviceRGB(), bitmapInfo: ctx.bitmapInfo.rawValue)
+            newCtx?.concatenate(ctx.ctm)
+            return newCtx
+        })
+        guard let newCtx = slcs.first else {
             return
         }
         DispatchQueue.concurrentPerform(iterations: IterationCount, execute: { i in
