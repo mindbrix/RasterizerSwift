@@ -18,10 +18,6 @@ class View: NSView, CALayerDelegate {
         }
     }
     
-    static let DrawEllipse: Rasterizer.DrawClosure = { ctx in
-        ctx.fillEllipse(in: CGRect(x: 0, y: 0, width: 100, height: 100))
-    }
-    
     // MARK: - NSView
     
     required init?(coder: NSCoder) {
@@ -56,5 +52,9 @@ class View: NSView, CALayerDelegate {
         }
     }
     
-    let ellipse: CGLayer? = Rasterizer.createCGLayer(drawClosure: View.DrawEllipse)
+    static let featureSize = CGSize(width: 100, height: 100)
+    
+    let ellipse: CGLayer? = Rasterizer.createCGLayer(size: View.featureSize, drawClosure: { ctx in
+        ctx.fillEllipse(in: CGRect(origin: .zero, size: View.featureSize))
+    })
 }
