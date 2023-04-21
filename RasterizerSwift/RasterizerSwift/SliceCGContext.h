@@ -9,6 +9,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 
 @interface ContextWrapper : NSObject
+- (instancetype)init:(CGContextRef)ctx;
 @property(nonatomic) CGContextRef ctx;
 @end
 
