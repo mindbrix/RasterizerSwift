@@ -7,6 +7,10 @@
 
 import Cocoa
 
+func fract(_ n: Double) -> Double {
+    n - floor(n)
+}
+
 class View: NSView, CALayerDelegate {
     var sceneList: Rasterizer.SceneList = [] {
         didSet {
@@ -42,10 +46,13 @@ class View: NSView, CALayerDelegate {
     func update() {
         if let layer = ellipse {
             let interval: CFTimeInterval = 3
-            let time = CACurrentMediaTime() / interval
-            let t = time - floor(time)
+            let count = 9
+            let t = fract(CACurrentMediaTime() / interval)
             let size = self.bounds.size
-            sceneList = [.init(layer: layer, ctm: CGAffineTransformMakeTranslation(t * size.width, t * size.height))]
+            sceneList = (0...count).map({ i in
+                let it = fract(t + Double(i) / Double(count))
+                return .init(layer: layer, ctm: CGAffineTransformMakeTranslation(it * size.width, it * size.height))
+            })
         }
     }
     
