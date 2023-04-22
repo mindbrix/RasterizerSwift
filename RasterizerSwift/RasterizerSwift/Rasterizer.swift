@@ -32,24 +32,30 @@ class Rasterizer {
     }
     
     
-    static let IterationCount = 0
+    static let IterationCount = 4
+    
     static func drawList(list: SceneList, in ctx: CGContext) {
-        let slcs:[CGContext] = (0...IterationCount).compactMap({ i in
-            let newCtx = CGContext(data: ctx.data, width: ctx.width, height: ctx.height, bitsPerComponent: ctx.bitsPerComponent, bytesPerRow: ctx.bytesPerRow, space: ctx.colorSpace ?? CGColorSpaceCreateDeviceRGB(), bitmapInfo: ctx.bitmapInfo.rawValue)
-            newCtx?.concatenate(ctx.ctm)
-            return newCtx
-        })
-        guard let newCtx = slcs.first else {
+        guard let data = ctx.data else {
             return
         }
-        DispatchQueue.concurrentPerform(iterations: IterationCount, execute: { i in
-            print(i)
+        let scale = Int(ctx.ctm.a)
+        let sz = CGSize(width: ctx.width / scale, height: ctx.height / scale)
+        let sh = ceil(sz.height / CGFloat(IterationCount))
+        let slcs:[CGContext] = (0..<IterationCount).compactMap({ i in
+            let newCtx = CGContext(data: data + 0, width: ctx.width, height: ctx.height, bitsPerComponent: ctx.bitsPerComponent, bytesPerRow: ctx.bytesPerRow, space: ctx.colorSpace ?? CGColorSpaceCreateDeviceRGB(), bitmapInfo: ctx.bitmapInfo.rawValue)
+            newCtx?.concatenate(ctx.ctm)
+            newCtx?.clip(to: CGRect(x: 0, y: CGFloat(i) * sh, width: sz.width, height: sh))
+            return newCtx
         })
-        for element in list {
-            newCtx.saveGState()
-            newCtx.concatenate(element.ctm)
-            newCtx.draw(element.layer, at: .zero)
-            newCtx.restoreGState()
-        }
+        DispatchQueue.concurrentPerform(iterations: slcs.count, execute: { i in
+            let newCtx = slcs[i]
+            
+            for element in list {
+                newCtx.saveGState()
+                newCtx.concatenate(element.ctm)
+                newCtx.draw(element.layer, at: .zero)
+                newCtx.restoreGState()
+            }
+        })
     }
 }
