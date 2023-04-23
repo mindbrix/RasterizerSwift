@@ -32,7 +32,7 @@ class Rasterizer {
     }
     
     
-    static let IterationCount = 4
+    static let IterationCount = 8
     
     static func drawList(list: SceneList, in ctx: CGContext, with bounds: CGRect) {
         guard let data = ctx.data else {
@@ -47,12 +47,15 @@ class Rasterizer {
         })
         DispatchQueue.concurrentPerform(iterations: slcs.count, execute: { i in
             let newCtx = slcs[i]
-            
+            let clip = newCtx.boundingBoxOfClipPath
             for element in list {
-                newCtx.saveGState()
-                newCtx.concatenate(element.ctm)
-                newCtx.draw(element.layer, at: .zero)
-                newCtx.restoreGState()
+                let rect = CGRect(origin: .zero, size: element.layer.size).applying(element.ctm)
+                if rect.intersects(clip) {
+                    newCtx.saveGState()
+                    newCtx.concatenate(element.ctm)
+                    newCtx.draw(element.layer, at: .zero)
+                    newCtx.restoreGState()
+                }
             }
         })
     }
