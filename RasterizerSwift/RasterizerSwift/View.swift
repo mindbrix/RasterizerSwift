@@ -37,7 +37,7 @@ class View: NSView, CALayerDelegate {
     // MARK: - CALayerDelegate
     
     func draw(_ layer: CALayer, in ctx: CGContext) {
-        Rasterizer.drawList(list: sceneList, in: ctx)
+        Rasterizer.drawList(list: sceneList, in: ctx, with: self.bounds)
     }
 
     func update() {
