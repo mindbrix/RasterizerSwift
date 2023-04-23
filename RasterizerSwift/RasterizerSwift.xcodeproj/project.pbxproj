@@ -17,7 +17,6 @@
 		E9A5394429F16C52001E3E39 /* RasterizerSwiftUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A5394329F16C52001E3E39 /* RasterizerSwiftUITestsLaunchTests.swift */; };
 		E9A5395329F16D8C001E3E39 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A5395229F16D8C001E3E39 /* View.swift */; };
 		E9A5395529F1720B001E3E39 /* Rasterizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A5395429F1720B001E3E39 /* Rasterizer.swift */; };
-		E9A5395829F297B2001E3E39 /* SliceCGContext.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A5395729F297B2001E3E39 /* SliceCGContext.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,9 +52,6 @@
 		E9A5394329F16C52001E3E39 /* RasterizerSwiftUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterizerSwiftUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E9A5395229F16D8C001E3E39 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		E9A5395429F1720B001E3E39 /* Rasterizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rasterizer.swift; sourceTree = "<group>"; };
-		E9A5395629F297B1001E3E39 /* RasterizerSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RasterizerSwift-Bridging-Header.h"; sourceTree = "<group>"; };
-		E9A5395729F297B2001E3E39 /* SliceCGContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SliceCGContext.m; sourceTree = "<group>"; };
-		E9A5395929F29D13001E3E39 /* SliceCGContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SliceCGContext.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +111,6 @@
 				E9A5392E29F16C52001E3E39 /* RasterizerSwift.entitlements */,
 				E9A5395229F16D8C001E3E39 /* View.swift */,
 				E9A5395429F1720B001E3E39 /* Rasterizer.swift */,
-				E9A5395929F29D13001E3E39 /* SliceCGContext.h */,
-				E9A5395729F297B2001E3E39 /* SliceCGContext.m */,
-				E9A5395629F297B1001E3E39 /* RasterizerSwift-Bridging-Header.h */,
 			);
 			path = RasterizerSwift;
 			sourceTree = "<group>";
@@ -274,7 +267,6 @@
 				E9A5392529F16C51001E3E39 /* ViewController.swift in Sources */,
 				E9A5392329F16C51001E3E39 /* AppDelegate.swift in Sources */,
 				E9A5395529F1720B001E3E39 /* Rasterizer.swift in Sources */,
-				E9A5395829F297B2001E3E39 /* SliceCGContext.m in Sources */,
 				E9A5392729F16C51001E3E39 /* Document.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,7 +453,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.mindbrix.RasterizerSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "RasterizerSwift/RasterizerSwift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -492,7 +483,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.mindbrix.RasterizerSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "RasterizerSwift/RasterizerSwift-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
